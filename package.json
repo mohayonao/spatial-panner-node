@@ -1,0 +1,27 @@
+{
+  "name": "spatial-panner-node",
+  "description": "SpatialPannerNode for legacy Web Audio API",
+  "version": "0.0.0",
+  "author": "Nao Yonamine <mohayonao@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/mohayonao/spatial-panner-node/issues"
+  },
+  "devDependencies": {},
+  "files": [
+    "lib",
+    "package.json",
+    "README.md"
+  ],
+  "homepage": "http://mohayonao.github.io/spatial-panner-node/",
+  "keywords": [
+    "polyfill",
+    "web audio api"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mohayonao/spatial-panner-node.git"
+  },
+  "scripts": {}
+}
