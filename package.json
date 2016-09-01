@@ -6,9 +6,21 @@
   "bugs": {
     "url": "https://github.com/mohayonao/spatial-panner-node/issues"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "eslint": "^3.4.0",
+    "mocha": "^3.0.2",
+    "npm-run-all": "^3.0.0",
+    "power-assert": "^1.4.1",
+    "run-with-mocha": "^0.2.0"
+  },
   "files": [
     "lib",
+    "build",
     "package.json",
     "README.md"
   ],
@@ -23,5 +35,17 @@
     "type": "git",
     "url": "git://github.com/mohayonao/spatial-panner-node.git"
   },
-  "scripts": {}
+  "scripts": {
+    "build": "npm-run-all build:*",
+    "build:browser": "mkdir -p build && BABEL_ENV=production browserify src -s SpatialPannerNode -o build/spatial-panner-node.js -t [ babelify ]",
+    "build:to5": "BABEL_ENV=production babel src --out-dir lib",
+    "clean": "rm -rf lib coverage .nyc_output npm-debug.log",
+    "lint": "eslint src test",
+    "postversion": "git push && git push --tags && npm run clean",
+    "prepublish": "rm -rf lib build && npm-run-all lint test build",
+    "preversion": "npm-run-all clean lint test",
+    "test": "mocha",
+    "travis": "npm-run-all lint test",
+    "version": "npm run build && git add -A build"
+  }
 }
